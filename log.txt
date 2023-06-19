@@ -1,0 +1,13 @@
+2023-06-19T08:51:42.937+03:00  INFO 11140 --- [main] c.e.m.MoneyTransferServiceApplication    : Starting MoneyTransferServiceApplication using Java 20.0.1 with PID 11140 (C:\Users\in_sd\IdeaProjects\Money_transfer_service\target\classes started by in_sd in C:\Users\in_sd\IdeaProjects\Money_transfer_service)
+2023-06-19T08:51:42.945+03:00  INFO 11140 --- [main] c.e.m.MoneyTransferServiceApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-19T08:51:43.771+03:00  INFO 11140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5500 (http)
+2023-06-19T08:51:43.778+03:00  INFO 11140 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-19T08:51:43.780+03:00  INFO 11140 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-19T08:51:43.846+03:00  INFO 11140 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-19T08:51:43.846+03:00  INFO 11140 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 855 ms
+2023-06-19T08:51:44.167+03:00  INFO 11140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5500 (http) with context path ''
+2023-06-19T08:51:44.174+03:00  INFO 11140 --- [main] c.e.m.MoneyTransferServiceApplication    : Started MoneyTransferServiceApplication in 1.653 seconds (process running for 2.448)
+2023-06-19T08:52:04.263+03:00  INFO 11140 --- [http-nio-5500-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-19T08:52:04.263+03:00  INFO 11140 --- [http-nio-5500-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-19T08:52:04.263+03:00  INFO 11140 --- [http-nio-5500-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-06-19T08:54:33.069+03:00  INFO 11140 --- [http-nio-5500-exec-3] c.e.m.service.BankService                : Перевод c карты 1234567890123456 на карту 0987654321098765 в размере 1000, с комиссией 10 - выполнен успешно
