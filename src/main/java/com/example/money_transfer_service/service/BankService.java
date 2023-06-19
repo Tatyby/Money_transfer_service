@@ -16,11 +16,11 @@ public class BankService {
 
     public ResponsMoney transfer(RequestTransfer requestTransfer) { //возвращает id операции
 
-        final String cardFromNumber = requestTransfer.getCardFromNumber();
-        final String cardFromValidTill = requestTransfer.getCardFromValidTill();
-        final String cardFromCVV = requestTransfer.getCardFromCVV();
-        final String cardToNumber = requestTransfer.getCardToNumber();
-        final int amount = requestTransfer.getAmount().getValue();
+        final String cardFromNumber = requestTransfer.cardFromNumber();
+        final String cardFromValidTill = requestTransfer.cardFromValidTill();
+        final String cardFromCVV = requestTransfer.cardFromCVV();
+        final String cardToNumber = requestTransfer.cardToNumber();
+        final int amount = requestTransfer.amount().value();
         final int commission = amount / 100;
 
         if (check()) {
@@ -37,7 +37,7 @@ public class BankService {
     }
 
     public ResponsMoney confirmOperation(RequestConfirmOperation requestConfirmOperation) {
-        final String idOperation = requestConfirmOperation.getOperationId();
+        final String idOperation = requestConfirmOperation.operationId();
         return new ResponsMoney(idOperation);
 
     }

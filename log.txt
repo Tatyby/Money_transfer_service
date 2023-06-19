@@ -11,3 +11,16 @@
 2023-06-19T08:52:04.263+03:00  INFO 11140 --- [http-nio-5500-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2023-06-19T08:52:04.263+03:00  INFO 11140 --- [http-nio-5500-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
 2023-06-19T08:54:33.069+03:00  INFO 11140 --- [http-nio-5500-exec-3] c.e.m.service.BankService                : Перевод c карты 1234567890123456 на карту 0987654321098765 в размере 1000, с комиссией 10 - выполнен успешно
+2023-06-19T10:20:23.761+03:00  INFO 12052 --- [main] c.e.m.MoneyTransferServiceApplication    : Starting MoneyTransferServiceApplication using Java 20.0.1 with PID 12052 (C:\Users\in_sd\IdeaProjects\Money_transfer_service\target\classes started by in_sd in C:\Users\in_sd\IdeaProjects\Money_transfer_service)
+2023-06-19T10:20:23.765+03:00  INFO 12052 --- [main] c.e.m.MoneyTransferServiceApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-06-19T10:20:24.578+03:00  INFO 12052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5050 (http)
+2023-06-19T10:20:24.586+03:00  INFO 12052 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-19T10:20:24.587+03:00  INFO 12052 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-19T10:20:24.665+03:00  INFO 12052 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-19T10:20:24.666+03:00  INFO 12052 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 823 ms
+2023-06-19T10:20:25.005+03:00  INFO 12052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5050 (http) with context path ''
+2023-06-19T10:20:25.012+03:00  INFO 12052 --- [main] c.e.m.MoneyTransferServiceApplication    : Started MoneyTransferServiceApplication in 1.619 seconds (process running for 2.402)
+2023-06-19T10:21:44.078+03:00  INFO 12052 --- [http-nio-5050-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-19T10:21:44.078+03:00  INFO 12052 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-19T10:21:44.079+03:00  INFO 12052 --- [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-19T10:21:44.175+03:00  INFO 12052 --- [http-nio-5050-exec-1] c.e.m.service.BankService                : Перевод c карты 1234567890123456 на карту 0987654321098765 в размере 1000, с комиссией 10 - выполнен успешно
