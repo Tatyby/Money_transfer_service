@@ -34,15 +34,13 @@ class MoneyTransferServiceApplicationTests {
                 new Amount(200, "RUR"));
         ResponseEntity<String> forEntity = testRestTemplate.postForEntity(host + appContainer.getMappedPort(port)
                 + transferEndpoint, requestTransfer, String.class);
+      //  System.out.println(forEntity.getBody());
         Assertions.assertEquals(expected, forEntity.getBody());
-    }
 
-    @Test
-    void contextLoadsConfirmation() {
         RequestConfirmOperation requestConfirmOperation = new RequestConfirmOperation("1", "0000");
-        ResponseEntity<String> forEntity = testRestTemplate.postForEntity(host + appContainer.getMappedPort(port) +
-                confirmOperationEndpoint, requestConfirmOperation, String.class);
-        Assertions.assertEquals(expected, forEntity.getBody());
+        ResponseEntity<String> entity = testRestTemplate.postForEntity(host + appContainer.getMappedPort(port)
+                + confirmOperationEndpoint, requestConfirmOperation, String.class);
+        Assertions.assertEquals(expected, entity.getBody());
     }
 }
 

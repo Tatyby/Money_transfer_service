@@ -19,18 +19,13 @@ import java.time.Year;
 @Slf4j
 public class BankService {
     private final BankRepository bankRepository;
+
     private final String NO_MONEY = "Недостаточно средств на карте";
     private final String INVALID_CODE = "Не верный код";
     private final String staticCode = "0000";
-    private final String CARD_NUMBER_16_DIGITS = "Номер карты должен состоять из 16 цифр";
-    private final String ENTER_DATA_CARD = "Введите срок действия карты";
-    private final String ENTER_CORRECT_MONTH = "Введите корректный месяц";
-    private final String CARD_EXPIRED_WRONG_YEAR = "Истек срок действия карты, неверный год";
-    private final String CARD_EXPIRED_WRONG_MONTH = "Истек срок действия карты, неверный месяц";
-    private final String ENTER_CORRECT_CVV = "Введите корректный CVV код";
-    private final String AMOUNT_OPERATION_MORE_THEN_ZERO = "Сумма операции должна быть больше нуля";
 
     public ResponsMoney transfer(RequestTransfer requestTransfer) { //возвращает id операции
+
 
         final String cardFromNumber = requestTransfer.cardFromNumber();
         final String cardFromValidTill = requestTransfer.cardFromValidTill();
@@ -38,12 +33,13 @@ public class BankService {
         final String cardToNumber = requestTransfer.cardToNumber();
         final int amount = requestTransfer.amount().value();
         final int commission = amount / 100;
+        ValidatedImpl validated = new ValidatedImpl();
 
-        validatedNumberCard(cardFromNumber);
-        validatedNumberCard(cardToNumber);
-        validatedCVVCard(cardFromCVV);
-        validatedDataCard(cardFromValidTill);
-        validatedAmountCard(amount);
+        validated.validatedNumberCard(cardFromNumber);
+        validated.validatedNumberCard(cardToNumber);
+        validated.validatedCVVCard(cardFromCVV);
+        validated.validatedDataCard(cardFromValidTill);
+        validated.validatedAmountCard(amount);
 
         if (check(commission, amount)) {
             final String idOperation = String.valueOf(bankRepository.getId());
@@ -55,8 +51,6 @@ public class BankService {
             bankRepository.saveBalanceToCard(idOperation, balanceToCard);
             bankRepository.saveNumberFromCard(idOperation, cardFromNumber);
             bankRepository.saveNumberToCard(idOperation, cardToNumber);
-
-
             log.info("Перевод c карты {} на карту {} в размере {}, с комиссией {} отправлен код подтверждения{}",
                     cardFromNumber, cardToNumber, amount, commission, code);
             return new ResponsMoney(idOperation);
@@ -84,44 +78,8 @@ public class BankService {
                     bankRepository.getNumberToCard(idOperation), bankRepository.getBalanceToCard(idOperation));
             return new ResponsMoney(idOperation);
         } else {
-            throw new BankErrorConfirmation(INVALID_CODE);
-        }
-    }
-
-    public void validatedNumberCard(String cardNumber) {
-        if (cardNumber.length() != 16) {
-            log.info(CARD_NUMBER_16_DIGITS);
-            throw new BankErrorInputData(CARD_NUMBER_16_DIGITS);
-        }
-    }
-
-    public void validatedDataCard(String cardValidTill) {
-        if (cardValidTill == null) {
-            throw new BankErrorInputData(ENTER_DATA_CARD);
-        }
-        String[] cardValidTillYearAndMonth = cardValidTill.split("/");
-        int month = Integer.parseInt(cardValidTillYearAndMonth[0]);
-        int year = Integer.parseInt(cardValidTillYearAndMonth[1]) + 2000;
-        if (month > 12 || month < 1) {
-            throw new BankErrorInputData(ENTER_CORRECT_MONTH);
-        }
-        if (year < Year.now().getValue()) {
-            throw new BankErrorInputData(CARD_EXPIRED_WRONG_YEAR);
-        }
-        if (year == Year.now().getValue() && month < LocalDate.now().getMonthValue()) {
-            throw new BankErrorInputData(CARD_EXPIRED_WRONG_MONTH);
-        }
-    }
-
-    public void validatedCVVCard(String cardCVV) {
-        if (cardCVV == null || cardCVV.length() != 3 || !cardCVV.chars().allMatch(Character::isDigit)) {
-            throw new BankErrorInputData(ENTER_CORRECT_CVV);
-        }
-    }
-
-    public void validatedAmountCard(int amount) {
-        if (amount <= 0) {
-            throw new BankErrorInputData(AMOUNT_OPERATION_MORE_THEN_ZERO);
+            throw new BankErrorConfirmation(INVALID_CODE);//500 ошибка
         }
     }
 }
+

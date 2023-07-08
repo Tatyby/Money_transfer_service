@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin("https://serp-ya.github.io/card-transfer/")
+@CrossOrigin()
 public class BankController {
     private final BankService bankService;
 
