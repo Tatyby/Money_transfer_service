@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BankRepository {
     private final Map<String, String> idAndCode = new HashMap<>();
     private final AtomicInteger idOperation = new AtomicInteger();
-    private final Amount balanceFromCardExample = new Amount(1000, "RUR");
+    private final Amount balanceFromCardExample = new Amount(5000, "RUR");
     private final Amount balanceToCardExample = new Amount(5000, "RUR");
     private final Map<String, Integer> balanceFromCards=new ConcurrentHashMap<>();
     private final Map<String, Integer> balanceToCards=new ConcurrentHashMap<>();
